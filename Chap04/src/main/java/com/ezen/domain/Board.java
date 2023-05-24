@@ -3,7 +3,11 @@ package com.ezen.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: Board
@@ -46,6 +50,7 @@ public class Board implements Serializable {
 	private String content;
 	private Date createDate = new Date();
 	private int cnt;
+	
 	public int getSeq() {
 		return seq;
 	}
