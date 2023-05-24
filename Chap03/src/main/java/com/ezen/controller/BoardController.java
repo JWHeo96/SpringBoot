@@ -1,14 +1,12 @@
 package com.ezen.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ezen.BoardVO;
+import com.ezen.domain.BoardVO;
 import com.ezen.service.BoardService;
 
 // 화면을 리턴하는게 아니라 일반적인 데이터를 리턴한다

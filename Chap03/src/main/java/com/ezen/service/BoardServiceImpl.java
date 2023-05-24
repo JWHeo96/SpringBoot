@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.ezen.BoardVO;
+import com.ezen.domain.BoardVO;
 
 public class BoardServiceImpl implements BoardService {
 

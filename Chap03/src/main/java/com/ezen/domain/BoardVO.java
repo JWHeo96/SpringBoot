@@ -1,4 +1,4 @@
-package com.ezen;
+package com.ezen.domain;
 
 import java.util.Date;
 

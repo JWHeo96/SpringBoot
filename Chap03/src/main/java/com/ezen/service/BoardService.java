@@ -2,7 +2,7 @@ package com.ezen.service;
 
 import java.util.List;
 
-import com.ezen.BoardVO;
+import com.ezen.domain.BoardVO;
 
 public interface BoardService {
 	String hello(String name);
