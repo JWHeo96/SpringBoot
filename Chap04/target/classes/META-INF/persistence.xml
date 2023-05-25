@@ -16,7 +16,10 @@
 			<property name="hibernate.format_sql" value="true"/>
 			<property name="hibernate.use_sql_comments" value="false"/>
 			<property name="hibernate.id.new_generator_mappings" value="true"/>
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<!-- hbm2ddl.auto 속성
+				validate - 엔티티와 테이블이 정상 매핑 확인.
+				none - 옵션 없음 -->
+			<property name="hibernate.hbm2ddl.auto" value="validate"/>
 		</properties>
 	</persistence-unit>
 </persistence>

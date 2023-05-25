@@ -27,6 +27,7 @@ public class App
 		
 		EntityTransaction tx = em.getTransaction();
 		
+		/*
 		// 게시글 삽입
 		try {
 			tx.begin();
@@ -43,13 +44,12 @@ public class App
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-		//	emf.close();
-		//	em.close();
+			emf.close();
+			em.close();
 		}
-		
-		
-		// 게시글 조회
+		*/
 		/*
+		// 게시글 조회
 		try {
 			Board board = em.find(Board.class, 1);
 			System.out.println("===> " +  board);
@@ -60,7 +60,7 @@ public class App
 			em.close();
 		}
 		*/
-		
+
 		/*
 		// 게시글 수정
 		try {
@@ -79,8 +79,8 @@ public class App
 		}
 		*/
 		
-		// 글 목록 조회
 		/*
+		// 글 목록 조회
 		try {
 			String jpql = "SELECT b FROM Board b ORDER BY b.seq DESC";
 			
