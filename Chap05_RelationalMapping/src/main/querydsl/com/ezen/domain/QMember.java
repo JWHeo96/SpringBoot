@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -18,6 +19,8 @@ public class QMember extends EntityPathBase<Member> {
     private static final long serialVersionUID = 864159457L;
 
     public static final QMember member = new QMember("member1");
+
+    public final ListPath<Board, QBoard> boardList = this.<Board, QBoard>createList("boardList", Board.class, QBoard.class, PathInits.DIRECT2);
 
     public final StringPath id = createString("id");
 

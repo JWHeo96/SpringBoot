@@ -1,6 +1,10 @@
 package com.ezen.persistence;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -68,8 +72,9 @@ public class ManyToOneTest {
 				}
 	}
 	
-	// 조회 테스트
+	// 조회 테스트(다대일 단방향 테스트)
 	@Test
+	@Disabled
 	public void testManyToOneSelect() {
 		Board board = boardRepo.findById(5L).get();
 		
@@ -77,5 +82,79 @@ public class ManyToOneTest {
 		System.out.println(board);
 		
 		System.out.println("작성자: " +board.getMember().getName());
+	}
+	
+	// 조회 테스트(다대일 양방향 테스트)
+	@Transactional
+	@Test
+	@Disabled
+	public void testTwoWaySelect() {
+		Member member1;
+		Member member2 = new Member();
+		
+		Optional<Member> result = memberRepo.findById("member1");
+		
+		/*
+		if (result.isEmpty()) {
+			System.out.println("조회된 회원이 없습니다.");
+		} else {
+			System.out.println("회원 명" + result.get().getName());
+		}
+		*/
+		
+		List<Board> list = result.get().getBoardList();
+		
+		System.out.println(">>>회원 명: " + result.get().getName());
+		
+		for(Board board : list) {
+			System.out.print(board.getTitle() + " : ");
+			System.out.print(board.getContent());
+			System.out.println();
+		}
+	}
+	
+	@Test
+	public void testManyToOneInsertCascade() {
+		Member member1 = new Member();
+		
+		member1.setId("member3");
+		member1.setPassword("111");
+		member1.setName("유관순");
+		member1.setRole("User");
+		
+		Member member2 = new Member();
+		member2.setId("member4");
+		member2.setPassword("2222");
+		member2.setName("장보고");
+		member2.setRole("Admin");
+		
+		// 게시글 데이터 저장
+		for(int i=1; i<=3; i++) {
+			Board board = new Board();
+			board.setMember(member1);
+			board.setTitle("유관순이 등록한 게시글 " + i);
+			board.setContent("유관순이 등록한 게시글 내용 " + i);
+			board.setCreateDate(new Date());
+			board.setCnt(0);
+		}
+		
+		memberRepo.save(member1);
+		
+		for(int i=1; i<=3; i++) {
+			Board board = new Board();
+			board.setMember(member2);
+			board.setTitle("장보고가 등록한 게시글 " + i);
+			board.setContent("장보고가 등록한 게시글 내용 " + i);
+			board.setCreateDate(new Date());
+			board.setCnt(0);
+		}
+		
+		memberRepo.save(member2);
+	}
+	
+	@Test
+	@Disabled
+	public void testCascadeDelete() {
+		memberRepo.deleteById("member2");
 	}
 }

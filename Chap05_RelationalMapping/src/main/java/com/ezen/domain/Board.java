@@ -23,7 +23,7 @@ import lombok.ToString;
  */
 @Getter
 @Setter
-@ToString
+@ToString(exclude="member")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -35,13 +35,18 @@ public class Board {
 	private long seq;
 	
 	private String title;
-	//private String writer;
+	//private String writer;	// member 필드가 있으므로 필요 없음
 	private String content;
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date createDate;
 	private int cnt;
 	
 	@ManyToOne
-	@JoinColumn(name="MEMBER_ID")
+	@JoinColumn(name="MEMBER_ID", nullable = false)
 	private Member member;
+	
+	public void setMember(Member member) {
+		this.member = member;
+		member.getBoardList().add(this);
+	}
 }
