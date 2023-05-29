@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Fragment Test</title>
+</head>
+<body>
+	<h1>Fragment Test</h1>
+	
+	<h2>Layout 1 - 1</h2>
+	<div th:replace="~{/fragments/fragment1 :: part1}"></div>
+	
+	<h2>Layout 1 - 2</h2>
+	<div th:insert="~{/fragments/fragment1 :: part2}"></div>
+	
+	<h2>Layout 1 - 3</h2>
+	<th:block th:replace="~{fragments/fragment1 :: part3}"></th:block>
+	
+	<!-- 파일 전체 내용 포함하기 -->
+	<div style="border: 1px solid blue;"> 
+		<th:block th:replace="~{/fragments/fragment2}"></th:block>
+	</div>
+	
+</body>
+</html>

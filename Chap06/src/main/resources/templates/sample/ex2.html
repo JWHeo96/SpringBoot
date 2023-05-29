@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.target {
+		background-color: red;
+	}
+</style>
 </head>
 <body>
 	<!-- 반복문 처리 -->
@@ -10,27 +15,59 @@
 	<!-- c:forEach items="${list}" var="item"> </c:forEach> -->
 	<!-- 태그 없이 텍스트를 그대로 출력시 왼쪽대괄호왼쪽대괄호 오른쪽대괄호오른쪽대괄호 사용 -->
 	<ul>
-	<!--/* 
+		<!--/* 
 			<li th:each="item : ${list}">
 				[[${item}]]	
 			</li>
-	*/-->
+		*/-->
 		
 		<!-- 반복문 상태 변수(state) 사용 -->
+		<!-- state:index: 0부터 시작 -->
+		<!-- state:count: 1부터 시작 -->
+		<!--/*  
 			<li th:each="item, state : ${list}">
-				[[${state.index} + 1]] -- [[${item}]]
+				<span th:text="${state.index}"></span>  -- <span th:text="${item}"}></span> 
 			</li>
+		*/-->
 	
 		<!-- 제어문: th:if -->
+		<!--/* 
 			<li th:each="item : ${list}" th:if="${item.sno % 5 == 0}">
 				[[${item}]]
 			</li>
+		*/-->
 			
 		<!--/* 제어문: th:if, th:unless (지정된 조건이 아니면의 의미) */-->
+		<!--/*  
 		<li th:each="item : ${list}">
 			<span th:if="${item.sno % 5 == 0}" th:text="${'---------'}"></span>
 			<span th:unless="${item.sno % 5 == 0}" th:text="${item.first}"></span>
 		</li>
+		*/-->
+		
+		<!-- 제어문: ? 연산자 -->
+		<!-- <조건식> ? <첫번째 표현식> : <두번째 표현식> -->
+		<!--  
+		<li th:each="item, state : ${list}" 
+					th:text="${item.sno % 5 == 0} ? ${item.sno} : ${item.first}">
+			
+		</li>
+		-->
+		
+		<!-- 지정한 조건에 따라 CSS 선별적으로 적용 -->
+		<!-- 
+		<li th:each="item : ${list}" th:text="${item}" 
+					th:class="${item.sno % 5 == 0} ? 'target'">
+		</li>
+		-->
+		
+		<!-- th:block -->
+		<!-- thymeleaf의 유일한 태그, 범위를 지정하기 위해 사용 -->
+		<!-- 숫자, 날짜 표시할 때 #numbers, #dates 등을 사용 -->
+		<th:block th:each="item : ${list}">
+			<li th:text="${item.sno % 5 == 0} ? ${#numbers.formatInteger(item.sno, 3)} : ${item.first}"></li>
+		</th:block>
+		
 	</ul>
 </body>
 </html>

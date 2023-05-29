@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ex3</title>
+</head>
+<body>
+	<h1 th:text="${result}"></h1>
+	<h1 th:text="${dto}"></h1>
+	
+	<!-- script 태그에 th:inline을 사용하여 서버데이터 표현 -->
+	<script th:inline="javascript">
+		var msg = [[${result}]]
+		var dto = [[${dto}]]
+		console.log("msg=",msg);
+		console.log("dto=",dto);
+	</script>
+</body>
+</html>

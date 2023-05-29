@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 날짜 형식 변환 -->
+	<ul>
+		<li th:each="item : ${list}">
+			[[${item.sno}]] -- [[${#temporals.format(item.regTime, 'yyyy/MM/dd hh시mm분ss초')}]]
+		</li>
+	</ul>
+</body>
+</html>

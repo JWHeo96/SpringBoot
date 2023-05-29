@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+
+	<!-- div>ul>li -->
+	<div>
+		<ul>
+			<li></li>
+		</ul>
+	</div>
+	
+	<!-- 자손 노드 생성: div>ul>li*3 -->
+	<div>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	
+	<!-- 형제 노드 생성: div+p+bq -->
+	<div></div>
+	<p></p>
+	<blockquote></blockquote>
+	
+	<!-- 한단계 위에 요소 배치: ^ -->
+	<!-- div+div>p>span+em^bq -->
+	<div></div>
+	<div>
+		<p>
+			<span></span>
+			<em></em>
+		</p>
+		<blockquote></blockquote>
+	</div>
+	
+	<!-- class명이 target인 div 생성 -->
+	<!-- div.target -->
+	<div class="target"></div>
+	
+	<!-- id속성이 "name"인 input 생성 -->
+	<!-- input#name -->
+	<input type="text" id="name" />
+</body>
+</html>

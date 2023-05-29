@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+
+	<th:block th:fragment="content">
+		<h1>exTemplate Page</h1>
+		<p>Thymeleaf is a modern server-side Java template engine for both web and standalone environments.</p>
+	</th:block>
+</th:block>
+</body>
+</html>
