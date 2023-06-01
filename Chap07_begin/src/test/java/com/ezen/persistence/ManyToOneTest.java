@@ -26,6 +26,7 @@ public class ManyToOneTest {
 	@Autowired
 	private MemberRepository memberRepo;
 	
+	/*
 	@Test
 	@Disabled
 	public void testManyToOneInsert() {
@@ -83,6 +84,7 @@ public class ManyToOneTest {
 		System.out.println(board);
 		
 	}
+	*/
 	
 }
 

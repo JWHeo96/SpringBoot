@@ -1,6 +1,8 @@
 package com.ezen.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
@@ -22,5 +24,7 @@ public class Member {
 	private String id;
 	private String password;
 	private String name;
-	private String role;
+	@Enumerated(EnumType.STRING)	// 권한이 문자열로 저장됨.
+	private Role role;
+	private String enabled;
 }

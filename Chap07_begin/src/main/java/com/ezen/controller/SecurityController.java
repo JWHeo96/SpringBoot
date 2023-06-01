@@ -26,5 +26,21 @@ public class SecurityController {
 	public void forAdmin() {
 		System.out.println("Admin 요청입니다.");
 	}
+	
+	@GetMapping("/login")
+	public void login() {
+		System.out.println("Login 화면 요청");
+	}
+	
+	@GetMapping("/loginSuccess")
+	public void loginSuccess() {
+		System.out.println("LoginSuccess 화면 요청");
+	}
+	
+	@GetMapping("/accessDenied")
+	public void accessDenied() {
+		
+	}
 }
+
 
